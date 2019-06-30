@@ -1,0 +1,139 @@
+{% extends 'core/base.html' %}
+{% comment %} Incluimos la plantilla base a nuestro html {% endcomment %}
+{% comment %} Marcamos el titulo que queremos ver en la pagina {% endcomment %}
+{% block title %} Inicio {% endblock %} 
+{% comment %} Marcamos el inicio del contenido {% endcomment %}
+{% block content %}
+{% comment %} Archivos estaticos {% endcomment %}
+{% load static %}
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-md ">
+
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'inicio' %}">
+                            <img src="{% static 'core/media/img/icon.png' %}" width="50" height="50">
+                            
+                    </a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <div class="navbar-nav mr-auto ml-right">
+                            <a class="nav-item nav-link active" href="{% url 'inicio' %}">Inicio</a>
+                            <a class="nav-item nav-link" href="{% url 'nosotros' %}">Nosotros</a>
+                           
+                          
+                    </div>
+                    <div class="d-flex flex-row justify-content-center">
+                    <a href="{% url 'login' %}" class="btn btn-primary mr-2">Iniciar sesión</a>
+                </div>
+                </div>
+                        
+            </nav>
+       
+      
+
+       
+
+    <div class="container">
+        <h1 class="text-center mt-5">¡La vida laboral te espera!</h1>
+                    <h3 class="text-center mt-5" id="tec">Tecnologias utilizadas para realizar la aplicación </h3>
+            
+                <div class="row mt-5">
+                         <div class="col-sm-12 col-md-4 text-center">
+                        <img src="{% static 'core/media/img/MongoDB.png' %}" style="width: 200px; height: 200px;" alt="">
+                        <p class="mt-3 text-justify">
+                            <h4>MongoDB</h4>
+                                sistema de base de datos NoSQL orientado a documentos de código abierto. 
+                                En lugar de guardar los datos en tablas, tal y como se hace en las bases de datos relacionales, 
+                                MongoDB guarda estructuras de datos BSON (una especificación similar a JSON) con un esquema dinámico,haciendo que la integración de los datos en ciertas aplicaciones sea más fácil y rápida. 
+                                
+                        </p>
+                     </div>
+                     <div class="col-sm-12 col-md-4 text-center">
+                        <img src="{% static 'core/media/img/python.png'  %}" style="width: 200px; height: 200px;" alt="">
+                        <p class="mt-3 text-justify">
+                             <h4>Python</h4>
+                                lenguaje de programación interpretado de tipado dinámico cuya filosofía hace hincapié en una 
+                                sintaxis que favorezca un código legible. Se trata de un lenguaje de programación multiparadigma y disponible 
+                                en varias plataformas.
+                        </p>
+                     </div>
+                     <div class="col-sm-12 col-md-4 text-center">
+                        <img  src="{% static 'core/media/img/Bootstrap.png' %}" style="width: 200px; height: 200px;" alt="">
+                        <p class="mt-3 text-justify">
+                             <h4>Bootstrap</h4>
+                               marco front-end gratuito para un desarrollo web más rápido y fácil
+                                Bootstrap incluye plantillas de diseño basadas en HTML y CSS para tipografía, formularios, 
+                                botones, tablas, navegación, modals, carruseles de imágenes y muchos otros, así como plugins 
+                                opcionales de JavaScript Bootstrap también le da la capacidad de crear fácilmente diseños adaptables.
+                        </p>
+                     </div>
+                     
+                     
+                </div>
+
+               
+
+               <div class="row my-5">
+                    <div class="col-md-6 text-center">
+
+                    <h3 id="ubi">Mapa de ubicacion</h3>
+                    <iframe class="mt-3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15863.844567646913!2d-75.60514801898103!3d6.26884097501948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e4428ef4e52dddb%3A0x722fd6c39270ac72!2sMedell%C3%ADn%2C+Antioquia!5e0!3m2!1ses!2sco!4v1553098980443" width="500" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+                   </div>
+
+                     <div class="col-md-6">
+					<h2 class="text-center">Contactenos</h2>
+					<form class="row" method ="POST">
+					  
+           {% csrf_token %} 
+					  <div class="form-group col-sm-6 mt-3">
+					    <label for="exampleFormControlInput1">Correo Electrónico</label>
+					   {{ formulario.email }}
+					  </div>
+					  <div class="form-group col-sm-6 mt-3">
+					    <label for="exampleFormControlSelect1">Tipo de Atención Requerida</label>
+					   {{ formulario.tipom }}
+					  </div>
+
+					  <div class="form-group col-sm-12">
+					    <label for="exampleFormControlInput1">Nombre</label>
+              {{ formulario.nombre }}
+            </div>
+
+					  <div class="form-group col-sm-12">
+					    <label for="exampleFormControlTextarea1">Mensaje:</label>
+              {{ formulario.msj }}
+            </div>
+
+					  	<button type="submit" class="btn btn-info col-md-6">Enviar</button>
+
+					</form>
+				</div>
+
+        </div>
+                   
+        </div>           
+                
+        <footer class="page-footer font-small bg-dark">
+
+         
+          <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="https://mdbootstrap.com/education/bootstrap/">Python</a>
+          </div>
+       
+
+        </footer>
+        
+                 
+                
+{% comment %} Marcamos el fin del contenido {% endcomment %}
+{% endblock %}
+
+
+
+
+
+   
+    
+
+  

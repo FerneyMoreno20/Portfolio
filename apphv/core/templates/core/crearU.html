@@ -1,0 +1,221 @@
+{% extends 'core/base.html' %}
+{% comment %} Incluimos la plantilla base a nuestro html {% endcomment %}
+{% comment %} Marcamos el titulo que queremos ver en la pagina {% endcomment %}
+{% block title %} Editar Perfil {% endblock %} 
+{% comment %} Marcamos el inicio del contenido {% endcomment %}
+{% block content %}
+{% comment %} Archivos estaticos {% endcomment %}
+{% load static %}
+
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-md">
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{% url 'inicio' %}">
+            <img src="{% static 'core/media/img/icon.png' %}" width="50" height="50">
+            
+    </a>
+<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <div class="navbar-nav mr-auto ml-right">
+            <a class="nav-item nav-link active" href="{% url 'inicio' %}">Inicio</a>
+            <a class="nav-item nav-link" href="{% url 'listarU' %}">Mi Perfil</a>
+           
+          
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+            <a class="nav-item nav-link" href="{% url 'inicio' %}">Cerrar sesión</a>
+    
+    </div>
+</div>
+        
+</nav>
+
+
+   <div class="container my-5">
+     <h1 class="text-center mt-3">Datos Personales</h1>
+        <div class="row">
+        <div class="col-md-12 text-center">
+                <form method='POST'>
+                  {% csrf_token %}
+                  {% if error %}             
+                  <h2>{{error}}</h2>
+                    {% else %} 
+
+                        <div class="form-row mt-2">
+                                <div class="form-group col-md-6">
+                                <label class="text-left" for="inputEmail4">No. Documento</label>
+                                {{datos_form.IdUsuario}}
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Tipo de documento</label>
+                                 {{datos_form.idTipoDocu}}
+                                </div>
+                        </div>
+
+                       <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Nombre</label>
+                                {{datos_form.Nombre}}
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Apellido</label>
+                                 {{datos_form.Apellido}}
+                                </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Correo Electronico</label>
+                                {{datos_form.Correo}}
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Dirección</label>
+                                 {{datos_form.DireUsua}}
+                                </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Telefono</label>
+                                {{datos_form.TeleUsua}}
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Celular</label>
+                                 {{datos_form.CeluUsua}}
+                                </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Etnia</label>
+                                {{datos_form.idEtnias}}
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Estado Civil</label>
+                                 {{datos_form.idEstaCivil}}
+                                </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Genero</label>
+                                {{datos_form.GeneUsua}}
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Fecha de Registro</label>
+                                 {{datos_form.RegiUsua}}
+                                </div>
+                        </div>
+
+                         <div class="form-row">
+                                <div class="form-group col-md-12">
+                                <label for="inputEmail4">Estado</label>
+                                {{datos_form.EstaUsua}}
+                                </div>
+                                <div class="form-group col-md-12">
+                                <label for="inputPassword4">Perfil</label>
+                                 {{datos_form.PerfilPro}}
+                                </div>
+                        </div>
+
+                        <h1 class="text-center mt-4">Educación</h1>
+                        
+                         <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Tipo de estudio</label>
+                                {{datos_form.TipoEstu}}
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Instituto</label>
+                                 {{datos_form.Instituto}}
+                                </div>
+                        </div>
+
+                         <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Titulo de estudio</label>
+                                {{datos_form.TituloEst}}
+                                </div>
+                               
+                        </div> 
+
+
+                        <h1 class="text-center mt-4">Logros</h1>
+
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Tipo de logro</label>
+                                {{datos_form.NombTiLo}}
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Fecha de obtención del logro</label>
+                                 {{datos_form.FechLogr}}
+                                </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Nombre de logro</label>
+                                {{datos_form.NombLogr}}
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Descripción del logro</label>
+                                {{datos_form.DescLogr}}
+                                </div>
+                        </div>
+
+                         <h1 class="text-center mt-4">Experiencia</h1>
+
+                         <div class="form-row">
+                                <div class="form-group col-md-6">
+                                <label for="inputEmail4">Cargo ocupado</label>
+                                {{datos_form.CargExpe}}
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label for="inputPassword4">Empresa</label>
+                                 {{datos_form.EmprExpe}}
+                                </div>
+                        </div>
+
+                        <div class="form-row">
+                                <div class="form-group col-md-12">
+                                <label for="inputEmail4">Funciones realizadas</label>
+                                {{datos_form.FuncionE}}
+                                </div>
+                                <div class="form-group col-md-12">
+                                <label for="inputPassword4">Logros Alcanzados</label>
+                                 {{datos_form.LogrExpe}}
+                                </div>
+                        </div>
+
+                        <h1 class="text-center mt-4">Habilidades</h1>
+
+                        
+                        <div class="form-row">
+                                <div class="form-group col-md-12">
+                                <label for="inputEmail4">Nombre Habilidad</label>
+                                {{datos_form.NombHabil}}
+                                </div>
+                                <div class="form-group col-md-12">
+                                <label for="inputPassword4">Nivel de Habilidad</label>
+                                 {{datos_form.NiveHabil}}
+                                </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+                         
+                </form>
+                    {% endif %}                  
+                        
+                   
+                
+                       
+        </div>
+</div>
+
+</div>
+
+{% endblock %}

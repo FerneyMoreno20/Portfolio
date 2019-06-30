@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+ {% if perfil %}
+
+{% for usuario in perfil %}
+<div class="container m-4 text-center">
+   
+
+            <p>
+                <strong>Usuario: </strong><span>{{usuario.usuario}}</span><br />
+                <strong>Tipo de documento de identidad: </strong><span>{{usuario.tipodocumento}}</span><br />
+                <strong>Identificación: </strong><span>{{usuario.documento}}</span><br />
+                <strong>Nombre:  </strong><span>{{usuario.Nombre}}</span><br />
+                <strong>Apellido:  </strong><span>{{usuario.Apellido}}</span><br />
+                <strong>Telefono:  </strong><span>{{usuario.telefono}}</span><br />
+                <strong>Correo Electronico:  </strong><span>{{usuario.correo}}</span><br>
+                <strong>Dirección:  </strong><span>{{usuario.direccion}}</span><br />
+                <strong>Estado Civil:  </strong><span>{{usuario.estasdocivil}}</span><br />
+                <strong>Genero:  </strong><span>{{usuario.genero}}</span><br />
+                
+               
+
+            </p>
+
+            <div class="text-center">
+         <a href="{% url 'editarU' usuario.documento  %}"><button class="btn btn-success">Editar</button></a>
+         <a href="{% url 'eliminarU' usuario.IdUsuario  %}"><button class="btn btn-danger">Eliminar</button></a> 
+        </div>
+   
+
+    </div>
+     {% endfor %}
+ 
+    {% else %}
+
+        <h1>No existen autores registrados</h1>
+    
+    {% endif %}
+</body>
+</html>

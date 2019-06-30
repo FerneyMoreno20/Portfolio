@@ -1,0 +1,32 @@
+{% extends 'core/basel.html' %} {% comment %} Incluimos la plantilla base a nuestro html {% endcomment %} {% comment %} Marcamos el titulo que queremos ver en la pagina {% endcomment %} {% block title %} Login {% endblock %} {% comment %} Marcamos el
+inicio del contenido {% endcomment %} {% block content %} {% comment %} Archivos estaticos {% endcomment %} {% load static %}
+
+<div class="wrapper text-center">
+    <div id="formContent">
+
+        <div>
+            <img src="{%  static 'core/media/img/logo1.png' %}" id="icon" />
+        </div>
+
+
+        <form>
+            <input type="text" placeholder="Correo Electronico">
+            <input type="password" placeholder="Contraseña">
+
+            <div class="loginButton text-center">
+                <a class="btn btn-primary" href="{% url 'listarU' %}">Iniciar Sesión</a>
+            </div>
+
+        </form>
+
+
+        <div id="formFooter">
+            <a class="underlineHover" href="{% url 'registrar' %}">Registrate</a>
+            <br>
+            <a class="underlineHover" href="{% url 'recover' %}">Recuperar Contraseña</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

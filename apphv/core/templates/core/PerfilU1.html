@@ -1,0 +1,131 @@
+{% extends 'core/base.html' %}
+{% comment %} Incluimos la plantilla base a nuestro html {% endcomment %}
+{% comment %} Marcamos el titulo que queremos ver en la pagina {% endcomment %}
+{% block title %} Listar Usuarios {% endblock %} 
+{% comment %} Marcamos el inicio del contenido {% endcomment %}
+{% block content %}
+{% comment %} Archivos estaticos {% endcomment %}
+{% load static %}
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-md" width="100%">
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="{% url 'inicio' %}">
+            <img src="{% static 'core/media/img/icon.png' %}" width="50" height="50">
+            
+    </a>
+<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <div class="navbar-nav mr-auto ml-right">
+            <a class="nav-item nav-link active" href="{% url 'inicio' %}">Inicio</a>
+            <a class="nav-item nav-link" href="{% url 'crearU' %}">Crear Usuario</a>          
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+            <a class="nav-item nav-link" href="{% url 'inicio' %}">Cerrar sesión</a>
+    
+</div>
+</div>
+        
+</nav>
+
+ {% if usuarios %}
+
+{% for usuario in usuarios %}
+
+  <div id="page-wrap">
+    
+        <img src="{% static 'core/media/img/descarga1.jpg' %}" width="150" height="150" alt="Photo of Cthulu" id="pic" />
+    
+        <div id="contact-info" class="vcard">
+        
+            <!-- Microformats! -->
+        
+            <h1 class="fn">{{usuario.Nombre}} {{usuario.Apellido}} </h1>
+        
+            <p>
+                <strong>Tipo de documento de identidad: </strong><span>{{usuario.idTipoDocu}}</span><br />
+                <strong>Identificación: </strong><span>{{usuario.IdUsuario}}</span><br />
+                <strong>Telefono:  </strong><span>{{usuario.TeleUsua}}</span><br />
+                <strong>Celular:  </strong><span>{{usuario.CeluUsua}}</span><br />
+                <strong>Correo Electronico:  </strong><span>{{usuario.Correo}}</span><br>
+                <strong>Dirección:  </strong><span>{{usuario.DireUsua}}</span><br />
+                <strong>Etnia:  </strong><span>{{usuario.idEtnias}}</span><br />
+                <strong>Estado Civil:  </strong><span>{{usuario.idEstaCivil}}</span><br />
+                <strong>Genero:  </strong><span>{{usuario.GeneUsua}}</span><br />
+                <strong>Fecha:  </strong><span>{{usuario.RegiUsua}}</span><br />
+                <strong>Estado:  </strong><span>{{usuario.EstaUsua}}</span><br />
+               
+
+            </p>
+        </div>
+                
+        <div id="objective">
+        <strong>Perfil:</strong><br/>
+            <p>
+               {{usuario.PerfilPro}}
+            </p>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <dl>
+           
+           
+            <dt>Estudios Realizados</dt>
+            <dd>
+                <h2>{{usuario.TipoEstu}}</h2>
+                <p><strong>Instituto: </strong>{{usuario.Instituto}} <br />
+                <strong>Titulo de estudio:</strong> {{usuario.TituloEst}}</p>
+            </dd>
+            
+            <dd class="clear"></dd>
+            
+            <dt>Habilidades</dt>
+            <dd>
+                <h2>{{usuario.NombHabil}}</h2>
+                <p><strong>Nivel de Habilidad: </strong>{{usuario.NiveHabil}}</p>
+            </dd>
+            
+            <dd class="clear"></dd>
+            
+            <dt>Experiencias</dt>
+            <dd>
+                <h2>{{usuario.CargExpe}}<span><strong>Nombre Empresa:</strong> {{usuario.EmprExpe}} </span></h2>
+                 <p><strong>Funciones desempeñadas: </strong>{{usuario.FuncionE}} <br />
+                   <strong>Logros alcanzados:</strong> {{usuario.LogrExpe}}</p>
+            </dd>
+            
+            <dd class="clear"></dd>
+            
+            
+            <dd class="clear"></dd>
+            
+            <dt>Logros:</dt>
+            <dd> <p><strong>Tipo de logro: </strong>{{usuario.NombTiLo}} <br />
+                    <strong>Nombre logro: </strong>{{usuario.NombLogr}} <br />
+                    <strong>Fecha de obtención del logro: </strong> {{usuario.FechLogr}} <br />
+                    <strong>Descripción del logro: </strong> {{usuario.DescLogr}}
+                </p> 
+            </dd>
+            
+            <dd class="clear"></dd>
+        </dl>
+        
+        <div class="clear"></div>
+        <div class="text-center">
+         <a href="{% url 'editarU' usuario.IdUsuario  %}"><button class="btn btn-success">Editar</button></a>
+        <a href="{% url 'eliminarU' usuario.IdUsuario  %}"><button class="btn btn-danger">Eliminar</button></a>
+        </div>
+    
+    </div>
+    <hr>
+        
+     {% endfor %}
+ 
+    {% else %}
+
+        <h1>No existen autores registrados</h1>
+    
+    {% endif %}
+{% endblock %}
