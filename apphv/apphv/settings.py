@@ -78,20 +78,20 @@ WSGI_APPLICATION = 'apphv.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'NAME' : 'curriculum',
-#         'HOST': 'mongodb://localhost:27017/curriculum',#'mongodb+srv://appsena:2019sena@senaapps-e1gk3.mongodb.net/curriculum?retryWrites=true',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        'NAME' : 'curriculum',
+        'HOST': 'mongodb://localhost:27017/curriculum',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 
